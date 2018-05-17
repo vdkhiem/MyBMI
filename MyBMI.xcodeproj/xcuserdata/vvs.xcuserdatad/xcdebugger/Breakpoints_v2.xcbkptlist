@@ -10,59 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyBMI/ViewController.swift"
-            timestampString = "548217038.565158"
+            timestampString = "548221916.805167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "calculatBMI()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MyBMI.ViewController.calculatBMI() -&gt; Swift.Double"
-                  moduleName = "MyBMI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vvs/Documents/Khiem/MyBMI/MyBMI/MyBMI/ViewController.swift"
-                  timestampString = "548213246.137657"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MyBMI.ViewController.calculatBMI() -&gt; Swift.Double"
-                  moduleName = "MyBMI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vvs/Documents/Khiem/MyBMI/MyBMI/MyBMI/ViewController.swift"
-                  timestampString = "548213246.1430219"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "56"
-                  endingLineNumber = "56"
-                  offsetFromSymbolStart = "3476">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyBMI/ViewController.swift"
-            timestampString = "548217038.567082"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "unitsChange(_:)"
             landmarkType = "7">
          </BreakpointContent>

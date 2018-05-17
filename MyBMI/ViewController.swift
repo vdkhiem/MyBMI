@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var weightText: UITextField!
     @IBOutlet weak var heightText: UITextField!
     @IBOutlet weak var bmiResultLabel: UILabel!
+    @IBOutlet weak var bmiMessageLabel: UILabel!
+    
+    var bmiData:Set<Bmi> = []
     
     @IBAction func unitsChange(_ sender: Any) {
         switch unitsSegmentControl.selectedSegmentIndex {
@@ -36,13 +39,32 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        weightText.keyboardType = .decimalPad
-        heightText.keyboardType = .decimalPad
+        loadAppearance()
+        loadBMIData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadAppearance() {
+        weightText.keyboardType = .decimalPad
+        heightText.keyboardType = .decimalPad
+        bmiResultLabel.text = nil
+        bmiMessageLabel.text = nil
+    }
+    
+    func loadBMIData() {
+        bmiData.insert(Bmi(beginWeight: 0, endWeight: 15, bmiCategory: "Very severely underweight", bmiMessageType: BmiMessageType.warning))
+        bmiData.insert(Bmi(beginWeight: 15, endWeight: 16, bmiCategory: "Severely underweight", bmiMessageType: BmiMessageType.warning))
+        bmiData.insert(Bmi(beginWeight: 16, endWeight: 18.5, bmiCategory: "Underweight", bmiMessageType: BmiMessageType.warning))
+        bmiData.insert(Bmi(beginWeight: 18.5, endWeight: 25, bmiCategory: "Normal. Congratulation!", bmiMessageType: BmiMessageType.normal))
+        bmiData.insert(Bmi(beginWeight: 25, endWeight: 30, bmiCategory: "Overweight", bmiMessageType: BmiMessageType.warning))
+        bmiData.insert(Bmi(beginWeight: 30, endWeight: 35, bmiCategory: "Moderately obese", bmiMessageType: BmiMessageType.danger))
+        bmiData.insert(Bmi(beginWeight: 35, endWeight: 40, bmiCategory: "Severely obese", bmiMessageType: BmiMessageType.danger))
+        bmiData.insert(Bmi(beginWeight: 40, endWeight: 1000, bmiCategory: "Very severely obese", bmiMessageType: BmiMessageType.danger))
+        
     }
     
     func calculatBMI() -> Double {
@@ -56,7 +78,27 @@ class ViewController: UIViewController {
     }
     
     func displayBMI() {
-        bmiResultLabel.text = String(format: "%.2f", calculatBMI().rounded())
+        let bmi = calculatBMI()
+        
+        for item in bmiData {
+            if (item.beginWeight <= bmi && bmi < item.endWeight) {
+                bmiResultLabel.text = String(format: "%.2f", calculatBMI())
+                bmiMessageLabel.text = item.bmiCategory
+                setBmiResultLabelColor(type: item.bmiMessageType)
+            }
+        }
+    }
+    
+    func setBmiResultLabelColor(type: BmiMessageType) {
+        switch type
+        {
+            case BmiMessageType.normal:
+                bmiMessageLabel.textColor = UIColor.blue
+            case BmiMessageType.warning:
+                bmiMessageLabel.textColor = UIColor.yellow
+            case BmiMessageType.danger:
+                bmiMessageLabel.textColor = UIColor.red
+        }
     }
 }
 

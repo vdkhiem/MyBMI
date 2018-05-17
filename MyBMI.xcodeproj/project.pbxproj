@@ -12,6 +12,7 @@
 		FFDEA44920ACF81600B60AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDEA44720ACF81600B60AB4 /* Main.storyboard */; };
 		FFDEA44B20ACF81600B60AB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDEA44A20ACF81600B60AB4 /* Assets.xcassets */; };
 		FFDEA44E20ACF81600B60AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDEA44C20ACF81600B60AB4 /* LaunchScreen.storyboard */; };
+		FFDEA45620AD24FE00B60AB4 /* Bmi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA45520AD24FE00B60AB4 /* Bmi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		FFDEA44A20ACF81600B60AB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFDEA44D20ACF81600B60AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFDEA44F20ACF81600B60AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFDEA45520AD24FE00B60AB4 /* Bmi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bmi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				FFDEA44A20ACF81600B60AB4 /* Assets.xcassets */,
 				FFDEA44C20ACF81600B60AB4 /* LaunchScreen.storyboard */,
 				FFDEA44F20ACF81600B60AB4 /* Info.plist */,
+				FFDEA45520AD24FE00B60AB4 /* Bmi.swift */,
 			);
 			path = MyBMI;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFDEA45620AD24FE00B60AB4 /* Bmi.swift in Sources */,
 				FFDEA44620ACF81600B60AB4 /* ViewController.swift in Sources */,
 				FFDEA44420ACF81600B60AB4 /* AppDelegate.swift in Sources */,
 			);
