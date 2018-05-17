@@ -100,5 +100,21 @@ class ViewController: UIViewController {
                 bmiMessageLabel.textColor = UIColor.red
         }
     }
+    
+    func loadHistoryData() {
+        /*
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "BmiEnity", in: context)
+        let newUser = NSManagedObject(entity: entity!, insertInto: context)
+        
+        newUser.setValue(24.99, forKey: "bmi")
+        newUser.setValue(24.99, forKey: "bmi")
+        */
+    }
+    
+    func saveHistoryData() {
+        
+    }
 }
 

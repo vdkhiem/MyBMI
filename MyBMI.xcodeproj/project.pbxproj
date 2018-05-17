@@ -13,6 +13,7 @@
 		FFDEA44B20ACF81600B60AB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDEA44A20ACF81600B60AB4 /* Assets.xcassets */; };
 		FFDEA44E20ACF81600B60AB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDEA44C20ACF81600B60AB4 /* LaunchScreen.storyboard */; };
 		FFDEA45620AD24FE00B60AB4 /* Bmi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA45520AD24FE00B60AB4 /* Bmi.swift */; };
+		FFDEA45F20AD3B6700B60AB4 /* BmiModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA45D20AD3B6700B60AB4 /* BmiModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FFDEA44D20ACF81600B60AB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFDEA44F20ACF81600B60AB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFDEA45520AD24FE00B60AB4 /* Bmi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bmi.swift; sourceTree = "<group>"; };
+		FFDEA45E20AD3B6700B60AB4 /* BmiModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BmiModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				FFDEA44320ACF81600B60AB4 /* AppDelegate.swift */,
 				FFDEA44520ACF81600B60AB4 /* ViewController.swift */,
 				FFDEA44720ACF81600B60AB4 /* Main.storyboard */,
+				FFDEA45D20AD3B6700B60AB4 /* BmiModel.xcdatamodeld */,
 				FFDEA44A20ACF81600B60AB4 /* Assets.xcassets */,
 				FFDEA44C20ACF81600B60AB4 /* LaunchScreen.storyboard */,
 				FFDEA44F20ACF81600B60AB4 /* Info.plist */,
@@ -141,6 +144,7 @@
 			files = (
 				FFDEA45620AD24FE00B60AB4 /* Bmi.swift in Sources */,
 				FFDEA44620ACF81600B60AB4 /* ViewController.swift in Sources */,
+				FFDEA45F20AD3B6700B60AB4 /* BmiModel.xcdatamodeld in Sources */,
 				FFDEA44420ACF81600B60AB4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +328,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FFDEA45D20AD3B6700B60AB4 /* BmiModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FFDEA45E20AD3B6700B60AB4 /* BmiModel.xcdatamodel */,
+			);
+			currentVersion = FFDEA45E20AD3B6700B60AB4 /* BmiModel.xcdatamodel */;
+			path = BmiModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FFDEA43820ACF81600B60AB4 /* Project object */;
 }
