@@ -17,20 +17,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var heightText: UITextField!
     @IBOutlet weak var bmiResultLabel: UILabel!
     @IBOutlet weak var bmiMessageLabel: UILabel!
+    @IBOutlet weak var calculateButton: UIButton!
     
     var bmiData:Set<Bmi> = []
     
     @IBAction func unitsChange(_ sender: Any) {
-        switch unitsSegmentControl.selectedSegmentIndex {
-        case 0:
-            weightUnitLabel.text = "kg"
-            heightUnitLabel.text = "cm"
-        case 1:
-            weightUnitLabel.text = "lb"
-            heightUnitLabel.text = "in"
-        default:
-            break;
-        }
+        loadTextMeasurement()
     }
     
     @IBAction func calculateBMITouchUp(_ sender: UIButton) {
@@ -53,6 +45,10 @@ class ViewController: UIViewController {
         heightText.keyboardType = .decimalPad
         bmiResultLabel.text = nil
         bmiMessageLabel.text = nil
+        calculateButton.backgroundColor = UIColor.blue
+        calculateButton.layer.cornerRadius = 5
+        calculateButton.tintColor = UIColor.white
+        loadTextMeasurement()
     }
     
     func loadBMIData() {
@@ -95,9 +91,22 @@ class ViewController: UIViewController {
             case BmiMessageType.normal:
                 bmiMessageLabel.textColor = UIColor.blue
             case BmiMessageType.warning:
-                bmiMessageLabel.textColor = UIColor.yellow
+                bmiMessageLabel.textColor = UIColor.orange
             case BmiMessageType.danger:
                 bmiMessageLabel.textColor = UIColor.red
+        }
+    }
+    
+    func loadTextMeasurement() {
+        switch unitsSegmentControl.selectedSegmentIndex {
+        case 0:
+            weightText.placeholder = "kg"
+            heightText.placeholder = "cm"
+        case 1:
+            weightText.placeholder = "lb"
+            heightText.placeholder = "in"
+        default:
+            break;
         }
     }
     
