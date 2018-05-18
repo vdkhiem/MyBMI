@@ -99,6 +99,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History Data" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbg-bM-igO">
+                                <rect key="frame" x="16" y="437" width="344" height="211"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -142,6 +149,7 @@
                         <outlet property="bmiResultLabel" destination="l46-mb-VnD" id="9CQ-rR-lUd"/>
                         <outlet property="calculateButton" destination="80P-E8-GeL" id="klq-0p-Fil"/>
                         <outlet property="heightText" destination="9fk-fd-Exw" id="Hak-Xh-HaN"/>
+                        <outlet property="historyDataLabel" destination="Kbg-bM-igO" id="keq-Cl-3JH"/>
                         <outlet property="unitsSegmentControl" destination="DnJ-Tg-Gyl" id="iTn-pz-BSD"/>
                         <outlet property="weightText" destination="Wu5-e3-nMz" id="3vx-fm-tlb"/>
                     </connections>
