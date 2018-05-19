@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  MyBMI
 //
-//  Created by Alex Vasilyev on 17/05/18.
+//  Created by Khiem on 17/05/18.
 //  Copyright © 2018 Khiem Vo. All rights reserved.
 //
 
