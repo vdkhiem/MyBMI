@@ -11,6 +11,7 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    // Outlets declaration
     @IBOutlet weak var unitsSegmentControl: UISegmentedControl!
     @IBOutlet weak var weightText: UITextField!
     @IBOutlet weak var heightText: UITextField!
@@ -19,9 +20,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var tableViewHistoryData: UITableView!
     
+    // Member variables
     let historyDataMaxCount = 5
     var bmiData:Set<Bmi> = []
+    var coreDataManager = CoreDataManager(appDelegate: UIApplication.shared.delegate as! AppDelegate, entityName: "BmiData")
     
+    // Actions or Events
     @IBAction func unitsChange(_ sender: Any) {
         loadTextMeasurement()
     }
@@ -43,35 +47,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let historyDataList = fetchHistoryDataList()
+        let historyDataList = coreDataManager.fetchRows()
         return historyDataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "History Data Cell")
-        let historyDataList = fetchHistoryDataList()
-        let index = (historyDataList.count - 1) - indexPath.row
         
-        if (historyDataList.count > 0) {
-            let item = historyDataList[index]
-            var value: String = ""
-            
-            if let createdDate = item.value(forKey: "createdDate") as? String {
-                value += createdDate + ": "
-            }
-            if let result = item.value(forKey: "result") as? String {
-                value += result + ". "
-            }
-            if let message = item.value(forKey: "message") as? String {
-                value += message + "."
-            }
-            cell.textLabel?.text = value + "\n"
-            cell.textLabel?.font = UIFont(name:"Avenir", size:12)
-        }
+        cell.textLabel?.text = loadHistoryDataForCell(index: indexPath.row)
+        cell.textLabel?.font = UIFont(name:"Avenir", size:12)
         
         return cell
     }
     
+    // Helpers
     func loadAppearance() {
         weightText.keyboardType = .decimalPad
         heightText.keyboardType = .decimalPad
@@ -92,10 +81,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         bmiData.insert(Bmi(beginWeight: 30, endWeight: 35, bmiCategory: "Moderately obese", bmiMessageType: BmiMessageType.danger))
         bmiData.insert(Bmi(beginWeight: 35, endWeight: 40, bmiCategory: "Severely obese", bmiMessageType: BmiMessageType.danger))
         bmiData.insert(Bmi(beginWeight: 40, endWeight: 1000, bmiCategory: "Very severely obese", bmiMessageType: BmiMessageType.danger))
-        
     }
     
-    func calculatBMI() -> Double {
+    func calculateBMI() -> Double {
         let weight = !(weightText.text?.isEmpty)! ? Double(weightText.text!) : 0.0
         let height = !(heightText.text?.isEmpty)! ? Double(heightText.text!) : 0.0
         
@@ -106,11 +94,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func displayBMI() {
-        let bmi = calculatBMI()
+        let bmi = calculateBMI()
         
         for item in bmiData {
             if (item.beginWeight <= bmi && bmi < item.endWeight) {
-                bmiResultLabel.text = String(format: "%.2f", calculatBMI())
+                bmiResultLabel.text = String(format: "%.2f", bmi)
                 bmiMessageLabel.text = item.bmiCategory
                 setBmiResultLabelColor(type: item.bmiMessageType)
             }
@@ -142,71 +130,48 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func loadHistoryDataForCell(index: Int) -> String? {
+        let historyDataList = coreDataManager.fetchRows()
+        let index = (historyDataList.count - 1) - index
+        
+        if (historyDataList.count > 0) {
+            let item = historyDataList[index]
+            var value: String = ""
+            
+            if let createdDate = item.value(forKey: "createdDate") as? String {
+                value += createdDate + ": "
+            }
+            if let result = item.value(forKey: "result") as? String {
+                value += result + ". "
+            }
+            if let message = item.value(forKey: "message") as? String {
+                value += message + "."
+            }
+            return value + "\n"
+        }
+        return nil
+    }
+    
     func updateHistoryData() {
         addToHistoryData()
         deleteLastHistoryData()
     }
         
     func addToHistoryData() {
-        do {
-            let context = getContextFromCoreData()
-            let newValue = NSEntityDescription.insertNewObject(forEntityName: "BmiData", into: context)
-    
-            newValue.setValue(getNow(), forKey: "createdDate")
-            newValue.setValue(bmiResultLabel.text, forKey: "result")
-            newValue.setValue(bmiMessageLabel.text, forKey: "message")
-
-            try context.save()
-            self.tableViewHistoryData.reloadData()
-        } catch {
-            print("Failed to save")
-            print("Unexpected error: \(error).")
-        }
+        let rowEntity = coreDataManager.newRowToEntity()
+        rowEntity.setValue(UtilityManager().getNow(), forKey: "createdDate")
+        rowEntity.setValue(bmiResultLabel.text, forKey: "result")
+        rowEntity.setValue(bmiMessageLabel.text, forKey: "message")
+        coreDataManager.addRowToEntity(row: rowEntity)
+        self.tableViewHistoryData.reloadData()
     }
     
     func deleteLastHistoryData() {
-        do {
-            let context = getContextFromCoreData()
-            
-            var historyDataList = fetchHistoryDataList()
-            if historyDataList.count > historyDataMaxCount {
-                context.delete(historyDataList[0] )
-            }
-            
-            try context.save()
-            self.tableViewHistoryData.reloadData()
-        } catch {
-            print("Failed to save")
-            print("Unexpected error: \(error).")
+        var historyDataList = coreDataManager.fetchRows()
+        if historyDataList.count > historyDataMaxCount {
+            coreDataManager.deleteRowFromEntity(row: historyDataList[0] )
         }
-    }
-    
-    func getContextFromCoreData () -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        return context
-    }
-    
-    func fetchHistoryDataList() -> [NSManagedObject] {
-        let context = getContextFromCoreData()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "BmiData")
-        request.returnsObjectsAsFaults = false
-        do {
-            let results = try context.fetch(request)
-            return results as! [NSManagedObject]
-        } catch {
-            print("Request failed")
-            print("Unexpected error: \(error).")
-        }
-        
-        return [NSManagedObject]()
-    }
-    
-    func getNow() -> String {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "yyyy-MM-dd"
-        let now = dateformatter.string(from: Date())
-        return now
+        self.tableViewHistoryData.reloadData()
     }
 }
 
