@@ -28,8 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func calculateBMITouchUp(_ sender: UIButton) {
         displayBMI()
-        saveToHistoryData()
-        self.tableViewHistoryData.reloadData()
+        updateHistoryData()
     }
     
     override func viewDidLoad() {
@@ -142,23 +141,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             break;
         }
     }
+    
+    func updateHistoryData() {
+        addToHistoryData()
+        deleteLastHistoryData()
+    }
         
-    func saveToHistoryData() {
+    func addToHistoryData() {
         do {
             let context = getContextFromCoreData()
             let newValue = NSEntityDescription.insertNewObject(forEntityName: "BmiData", into: context)
-            
+    
             newValue.setValue(getNow(), forKey: "createdDate")
             newValue.setValue(bmiResultLabel.text, forKey: "result")
             newValue.setValue(bmiMessageLabel.text, forKey: "message")
+
+            try context.save()
+            self.tableViewHistoryData.reloadData()
+        } catch {
+            print("Failed to save")
+            print("Unexpected error: \(error).")
+        }
+    }
+    
+    func deleteLastHistoryData() {
+        do {
+            let context = getContextFromCoreData()
             
             var historyDataList = fetchHistoryDataList()
             if historyDataList.count > historyDataMaxCount {
-                context.delete(historyDataList[historyDataList.count-1] )
-                historyDataList.remove(at: historyDataList.count-1)
+                context.delete(historyDataList[0] )
             }
-        
+            
             try context.save()
+            self.tableViewHistoryData.reloadData()
         } catch {
             print("Failed to save")
             print("Unexpected error: \(error).")
