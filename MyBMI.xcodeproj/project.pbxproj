@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B74CEE0A20AFC7ED00480EB1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B74CEE0920AFC7ED00480EB1 /* .gitignore */; };
 		FFDEA44420ACF81600B60AB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA44320ACF81600B60AB4 /* AppDelegate.swift */; };
 		FFDEA44620ACF81600B60AB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA44520ACF81600B60AB4 /* ViewController.swift */; };
 		FFDEA44920ACF81600B60AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDEA44720ACF81600B60AB4 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B74CEE0920AFC7ED00480EB1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FFDEA44020ACF81600B60AB4 /* MyBMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDEA44320ACF81600B60AB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFDEA44520ACF81600B60AB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +44,7 @@
 		FFDEA43720ACF81600B60AB4 = {
 			isa = PBXGroup;
 			children = (
+				B74CEE0920AFC7ED00480EB1 /* .gitignore */,
 				FFDEA44220ACF81600B60AB4 /* MyBMI */,
 				FFDEA44120ACF81600B60AB4 /* Products */,
 			);
@@ -129,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B74CEE0A20AFC7ED00480EB1 /* .gitignore in Resources */,
 				FFDEA44E20ACF81600B60AB4 /* LaunchScreen.storyboard in Resources */,
 				FFDEA44B20ACF81600B60AB4 /* Assets.xcassets in Resources */,
 				FFDEA44920ACF81600B60AB4 /* Main.storyboard in Resources */,
