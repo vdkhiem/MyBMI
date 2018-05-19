@@ -99,15 +99,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History Data" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbg-bM-igO">
-                                <rect key="frame" x="16" y="437" width="344" height="211"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="211" id="hmj-AG-w7U"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t7F-oa-3qt">
+                                <rect key="frame" x="16" y="437" width="343" height="210"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="History Data Cell" id="uTb-qU-anW">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uTb-qU-anW" id="8aA-2L-kXz">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="GKi-87-kHL"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="dSJ-Ma-Hso"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -130,18 +139,19 @@
                             <constraint firstItem="VPu-X1-NUt" firstAttribute="trailing" secondItem="l46-mb-VnD" secondAttribute="trailing" id="UuK-8v-NFm"/>
                             <constraint firstItem="VPu-X1-NUt" firstAttribute="leading" secondItem="l46-mb-VnD" secondAttribute="leading" id="Wpd-Yu-IZv"/>
                             <constraint firstItem="eiT-Om-ufO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="X0n-ie-T3s"/>
+                            <constraint firstItem="t7F-oa-3qt" firstAttribute="trailing" secondItem="VPu-X1-NUt" secondAttribute="trailing" id="Y12-zV-xwd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Oon-RY-XYu" secondAttribute="trailing" constant="16" id="ZKD-v8-iVp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ovh-VZ-fmE" secondAttribute="trailing" constant="16" id="bQU-Zp-ruE"/>
                             <constraint firstItem="VPu-X1-NUt" firstAttribute="top" secondItem="l46-mb-VnD" secondAttribute="bottom" constant="12" id="cme-LQ-ZFr"/>
                             <constraint firstItem="9fk-fd-Exw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="dQH-iN-Mt6"/>
-                            <constraint firstItem="VPu-X1-NUt" firstAttribute="centerX" secondItem="Kbg-bM-igO" secondAttribute="centerX" id="dt6-GD-V65"/>
+                            <constraint firstAttribute="bottom" secondItem="t7F-oa-3qt" secondAttribute="bottom" constant="20" symbolic="YES" id="fAV-LB-KcP"/>
                             <constraint firstItem="9fk-fd-Exw" firstAttribute="top" secondItem="lNt-Us-4MR" secondAttribute="bottom" constant="6" id="g59-qJ-4QW"/>
                             <constraint firstItem="Oon-RY-XYu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="iWb-g6-z0Q"/>
                             <constraint firstItem="zyc-gg-aws" firstAttribute="top" secondItem="DnJ-Tg-Gyl" secondAttribute="bottom" constant="8" id="ils-EA-SmB"/>
-                            <constraint firstItem="Kbg-bM-igO" firstAttribute="top" secondItem="VPu-X1-NUt" secondAttribute="bottom" constant="8" symbolic="YES" id="kGi-lT-mIN"/>
                             <constraint firstItem="lNt-Us-4MR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="lpn-uj-QPL"/>
                             <constraint firstItem="l46-mb-VnD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="pNt-al-vCh"/>
-                            <constraint firstItem="VPu-X1-NUt" firstAttribute="leading" secondItem="Kbg-bM-igO" secondAttribute="leading" id="tlD-jJ-yVu"/>
+                            <constraint firstItem="t7F-oa-3qt" firstAttribute="leading" secondItem="VPu-X1-NUt" secondAttribute="leading" id="t0w-R3-Qm7"/>
+                            <constraint firstItem="t7F-oa-3qt" firstAttribute="top" secondItem="VPu-X1-NUt" secondAttribute="bottom" constant="8" symbolic="YES" id="tze-FQ-u9m"/>
                             <constraint firstItem="AqO-Gj-5ca" firstAttribute="top" secondItem="Ovh-VZ-fmE" secondAttribute="bottom" constant="8" symbolic="YES" id="uZt-fS-cTE"/>
                             <constraint firstItem="DnJ-Tg-Gyl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="use-09-daf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9fk-fd-Exw" secondAttribute="trailing" constant="16" id="vuc-ML-UdP"/>
@@ -154,7 +164,7 @@
                         <outlet property="bmiResultLabel" destination="l46-mb-VnD" id="9CQ-rR-lUd"/>
                         <outlet property="calculateButton" destination="80P-E8-GeL" id="klq-0p-Fil"/>
                         <outlet property="heightText" destination="9fk-fd-Exw" id="Hak-Xh-HaN"/>
-                        <outlet property="historyDataLabel" destination="Kbg-bM-igO" id="keq-Cl-3JH"/>
+                        <outlet property="tableViewHistoryData" destination="t7F-oa-3qt" id="jRW-z3-Fs8"/>
                         <outlet property="unitsSegmentControl" destination="DnJ-Tg-Gyl" id="iTn-pz-BSD"/>
                         <outlet property="weightText" destination="Wu5-e3-nMz" id="3vx-fm-tlb"/>
                     </connections>
