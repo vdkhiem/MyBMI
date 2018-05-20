@@ -33,8 +33,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func calculateBMITouchUp(_ sender: UIButton) {
-        displayBMI()
-        updateHistoryData()
+        let bmi = retrieveBMI()
+        displayBMI(bmi: bmi!)
+        updateHistoryData(byBMI: bmi!)
     }
     
     override func viewDidLoad() {
@@ -56,7 +57,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "History Data Cell")
         
-        cell.textLabel?.text = loadHistoryDataForCell(index: indexPath.row)
+        let (message, type) = loadHistoryDataForCell(index: indexPath.row)
+        cell.textLabel?.text = message
+        cell.textLabel?.textColor = getBMIColor(byType: type)
         cell.textLabel?.font = UIFont(name:"Avenir", size:12)
         
         return cell
@@ -95,27 +98,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return imperialRate * weight! / (height! * height!)
     }
     
-    func displayBMI() {
+    func retrieveBMI() -> Bmi? {
         let bmi = calculateBMI()
         
         for item in bmiData {
             if (item.beginWeight <= bmi && bmi < item.endWeight) {
-                bmiResultLabel.text = String(format: "%.2f", bmi)
-                bmiMessageLabel.text = item.bmiCategory
-                setBmiResultLabelColor(type: item.bmiMessageType)
+                return item
             }
         }
+        return nil
     }
     
-    func setBmiResultLabelColor(type: BmiMessageType) {
-        switch type
+    func displayBMI(bmi: Bmi) {
+        let calculatedBmi = calculateBMI()
+        bmiResultLabel.text = String(format: "%.2f", calculatedBmi)
+        bmiMessageLabel.text = bmi.bmiCategory
+        bmiMessageLabel.textColor = getBMIColor(byType: bmi.bmiMessageType)
+    }
+    
+    func getBMIColor(byType: BmiMessageType) -> UIColor {
+        switch byType
         {
             case BmiMessageType.normal:
-                bmiMessageLabel.textColor = colorManager.normalColor()
+                return colorManager.normalColor()
             case BmiMessageType.warning:
-                bmiMessageLabel.textColor = colorManager.warningColor()
+                return colorManager.warningColor()
             case BmiMessageType.danger:
-                bmiMessageLabel.textColor = colorManager.dangerColor()
+                return colorManager.dangerColor()
         }
     }
     
@@ -133,12 +142,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         heightText.placeholder = unit!["Height"] as? String
     }
     
-    func loadHistoryDataForCell(index: Int) -> String? {
+    func loadHistoryDataForCell(index: Int) -> (String?, BmiMessageType)  {
         let historyDataList = coreDataManager.fetchRows()
         let index = (historyDataList.count - 1) - index
+        var messageType: BmiMessageType = BmiMessageType.normal
         
         if (historyDataList.count > 0) {
             let item = historyDataList[index]
+            
             var value: String = ""
             
             if let createdDate = item.value(forKey: "createdDate") as? String {
@@ -150,21 +161,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let message = item.value(forKey: "message") as? String {
                 value += message + "."
             }
-            return value + "\n"
+            if let type = item.value(forKey: "messageType") as? String {
+                for item in BmiMessageType.array {
+                    if (item.rawValue == type) {
+                        messageType = item
+                        break
+                    }
+                }
+                
+            }
+            return (value + "\n", messageType)
         }
-        return nil
+        return (nil, messageType)
     }
     
-    func updateHistoryData() {
-        addToHistoryData()
+    func updateHistoryData(byBMI: Bmi) {
+        addToHistoryData(byBMI: byBMI)
         deleteLastHistoryData()
     }
         
-    func addToHistoryData() {
+    func addToHistoryData(byBMI: Bmi) {
         let rowEntity = coreDataManager.newRowToEntity()
         rowEntity.setValue(UtilityManager().getNow(), forKey: "createdDate")
         rowEntity.setValue(bmiResultLabel.text, forKey: "result")
         rowEntity.setValue(bmiMessageLabel.text, forKey: "message")
+        rowEntity.setValue(byBMI.bmiMessageType.rawValue, forKey: "messageType")
         coreDataManager.addRowToEntity(row: rowEntity)
         self.tableViewHistoryData.reloadData()
     }

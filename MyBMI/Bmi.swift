@@ -32,6 +32,18 @@ func ==(lhs: Bmi, rhs: Bmi) -> Bool {
         lhs.bmiMessageType == rhs.bmiMessageType
 }
 
-enum BmiMessageType  {
-    case normal, warning, danger
+enum BmiMessageType: String  {
+    case normal = "normal", warning = "warning", danger = "danger"
+}
+
+extension BmiMessageType {
+    static var array: [BmiMessageType] {
+        var a: [BmiMessageType] = []
+        switch BmiMessageType.normal {
+        case .normal: a.append(.normal); fallthrough
+        case .warning: a.append(.warning); fallthrough
+        case .danger: a.append(.danger);
+        }
+        return a
+    }
 }

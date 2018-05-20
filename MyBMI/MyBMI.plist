@@ -33,7 +33,7 @@
 		<key>Blue</key>
 		<integer>79</integer>
 		<key>Alpha</key>
-		<string>255</string>
+		<integer>255</integer>
 	</dict>
 	<key>ActionColor</key>
 	<dict>

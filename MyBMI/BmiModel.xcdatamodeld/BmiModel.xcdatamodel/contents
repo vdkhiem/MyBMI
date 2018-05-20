@@ -3,9 +3,10 @@
     <entity name="BmiData" representedClassName="BmiData" syncable="YES" codeGenerationType="class">
         <attribute name="createdDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BmiData" positionX="-45" positionY="0" width="128" height="90"/>
+        <element name="BmiData" positionX="-45" positionY="0" width="128" height="105"/>
     </elements>
 </model>
