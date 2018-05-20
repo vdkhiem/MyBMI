@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NormalColor</key>
+	<dict>
+		<key>Red</key>
+		<integer>66</integer>
+		<key>Green</key>
+		<integer>139</integer>
+		<key>Blue</key>
+		<integer>202</integer>
+		<key>Alpha</key>
+		<integer>255</integer>
+	</dict>
+	<key>WarningColor</key>
+	<dict>
+		<key>Red</key>
+		<integer>248</integer>
+		<key>Green</key>
+		<integer>148</integer>
+		<key>Blue</key>
+		<integer>6</integer>
+		<key>Alpha</key>
+		<integer>255</integer>
+	</dict>
+	<key>DangerColor</key>
+	<dict>
+		<key>Red</key>
+		<integer>217</integer>
+		<key>Green</key>
+		<integer>83</integer>
+		<key>Blue</key>
+		<integer>79</integer>
+		<key>Alpha</key>
+		<string>255</string>
+	</dict>
+	<key>ActionColor</key>
+	<dict>
+		<key>Red</key>
+		<integer>92</integer>
+		<key>Green</key>
+		<integer>184</integer>
+		<key>Blue</key>
+		<integer>92</integer>
+		<key>Alpha</key>
+		<integer>255</integer>
+	</dict>
+	<key>MetricUnit</key>
+	<dict>
+		<key>Weight</key>
+		<string>kg</string>
+		<key>Height</key>
+		<string>cm</string>
+	</dict>
+	<key>ImperialUnit</key>
+	<dict>
+		<key>Weight</key>
+		<string>lb</string>
+		<key>Height</key>
+		<string>in</string>
+	</dict>
+</dict>
+</plist>

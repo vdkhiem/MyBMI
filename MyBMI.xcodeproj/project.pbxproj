@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B712F84A20B0FAC700739FDC /* PListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B712F84920B0FAC700739FDC /* PListManager.swift */; };
+		B718374820B1287D00284C24 /* UIColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718374720B1287D00284C24 /* UIColorManager.swift */; };
 		B74CEE0A20AFC7ED00480EB1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B74CEE0920AFC7ED00480EB1 /* .gitignore */; };
 		B795FC2420B01ED300121AF8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795FC2320B01ED300121AF8 /* CoreDataManager.swift */; };
 		B795FC2620B0226700121AF8 /* UtilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795FC2520B0226700121AF8 /* UtilityManager.swift */; };
+		B795FC2820B0340000121AF8 /* MyBMI.plist in Resources */ = {isa = PBXBuildFile; fileRef = B795FC2720B0340000121AF8 /* MyBMI.plist */; };
 		FFDEA44420ACF81600B60AB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA44320ACF81600B60AB4 /* AppDelegate.swift */; };
 		FFDEA44620ACF81600B60AB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA44520ACF81600B60AB4 /* ViewController.swift */; };
 		FFDEA44920ACF81600B60AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDEA44720ACF81600B60AB4 /* Main.storyboard */; };
@@ -20,9 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B712F84920B0FAC700739FDC /* PListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListManager.swift; sourceTree = "<group>"; };
+		B718374720B1287D00284C24 /* UIColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorManager.swift; sourceTree = "<group>"; };
 		B74CEE0920AFC7ED00480EB1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B795FC2320B01ED300121AF8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B795FC2520B0226700121AF8 /* UtilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityManager.swift; sourceTree = "<group>"; };
+		B795FC2720B0340000121AF8 /* MyBMI.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MyBMI.plist; sourceTree = "<group>"; };
 		FFDEA44020ACF81600B60AB4 /* MyBMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDEA44320ACF81600B60AB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFDEA44520ACF81600B60AB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +81,9 @@
 				FFDEA45520AD24FE00B60AB4 /* Bmi.swift */,
 				B795FC2320B01ED300121AF8 /* CoreDataManager.swift */,
 				B795FC2520B0226700121AF8 /* UtilityManager.swift */,
+				B795FC2720B0340000121AF8 /* MyBMI.plist */,
+				B712F84920B0FAC700739FDC /* PListManager.swift */,
+				B718374720B1287D00284C24 /* UIColorManager.swift */,
 			);
 			path = MyBMI;
 			sourceTree = "<group>";
@@ -140,6 +149,7 @@
 			files = (
 				B74CEE0A20AFC7ED00480EB1 /* .gitignore in Resources */,
 				FFDEA44E20ACF81600B60AB4 /* LaunchScreen.storyboard in Resources */,
+				B795FC2820B0340000121AF8 /* MyBMI.plist in Resources */,
 				FFDEA44B20ACF81600B60AB4 /* Assets.xcassets in Resources */,
 				FFDEA44920ACF81600B60AB4 /* Main.storyboard in Resources */,
 			);
@@ -157,7 +167,9 @@
 				FFDEA45F20AD3B6700B60AB4 /* BmiModel.xcdatamodeld in Sources */,
 				B795FC2420B01ED300121AF8 /* CoreDataManager.swift in Sources */,
 				B795FC2620B0226700121AF8 /* UtilityManager.swift in Sources */,
+				B712F84A20B0FAC700739FDC /* PListManager.swift in Sources */,
 				FFDEA44420ACF81600B60AB4 /* AppDelegate.swift in Sources */,
+				B718374820B1287D00284C24 /* UIColorManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

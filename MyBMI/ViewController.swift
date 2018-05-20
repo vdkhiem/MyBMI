@@ -24,6 +24,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let historyDataMaxCount = 5
     var bmiData:Set<Bmi> = []
     var coreDataManager = CoreDataManager(appDelegate: UIApplication.shared.delegate as! AppDelegate, entityName: "BmiData")
+    let plistManager = PListManager(resourceName: "MyBMI")
+    let colorManager = UIColorManager()
     
     // Actions or Events
     @IBAction func unitsChange(_ sender: Any) {
@@ -66,15 +68,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         heightText.keyboardType = .decimalPad
         bmiResultLabel.text = nil
         bmiMessageLabel.text = nil
-        calculateButton.backgroundColor = UIColor(red:0.96, green:0.54, blue:0.10, alpha:1.0)
+        calculateButton.backgroundColor = colorManager.actionColor()
         calculateButton.layer.cornerRadius = 5
         calculateButton.tintColor = UIColor.white
         loadTextMeasurement()
     }
     
     func loadBMIData() {
-        bmiData.insert(Bmi(beginWeight: 0, endWeight: 15, bmiCategory: "Very severely underweight", bmiMessageType: BmiMessageType.warning))
-        bmiData.insert(Bmi(beginWeight: 15, endWeight: 16, bmiCategory: "Severely underweight", bmiMessageType: BmiMessageType.warning))
+        bmiData.insert(Bmi(beginWeight: 0, endWeight: 15, bmiCategory: "Very severely underweight", bmiMessageType: BmiMessageType.danger))
+        bmiData.insert(Bmi(beginWeight: 15, endWeight: 16, bmiCategory: "Severely underweight", bmiMessageType: BmiMessageType.danger))
         bmiData.insert(Bmi(beginWeight: 16, endWeight: 18.5, bmiCategory: "Underweight", bmiMessageType: BmiMessageType.warning))
         bmiData.insert(Bmi(beginWeight: 18.5, endWeight: 25, bmiCategory: "Normal. Congratulation", bmiMessageType: BmiMessageType.normal))
         bmiData.insert(Bmi(beginWeight: 25, endWeight: 30, bmiCategory: "Overweight", bmiMessageType: BmiMessageType.warning))
@@ -109,25 +111,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         switch type
         {
             case BmiMessageType.normal:
-                bmiMessageLabel.textColor = UIColor.blue
+                bmiMessageLabel.textColor = colorManager.normalColor()
             case BmiMessageType.warning:
-                bmiMessageLabel.textColor = UIColor.orange
+                bmiMessageLabel.textColor = colorManager.warningColor()
             case BmiMessageType.danger:
-                bmiMessageLabel.textColor = UIColor.red
+                bmiMessageLabel.textColor = colorManager.dangerColor()
         }
     }
     
     func loadTextMeasurement() {
+        var unit: AnyObject?
         switch unitsSegmentControl.selectedSegmentIndex {
-        case 0:
-            weightText.placeholder = "kg"
-            heightText.placeholder = "cm"
-        case 1:
-            weightText.placeholder = "lb"
-            heightText.placeholder = "in"
-        default:
-            break;
+            case 0:
+                unit = plistManager.readProperties(byKey: "MetricUnit")
+            case 1:
+                unit = plistManager.readProperties(byKey: "ImperialUnit")
+            default:
+                break
         }
+        weightText.placeholder = unit!["Weight"] as? String
+        heightText.placeholder = unit!["Height"] as? String
     }
     
     func loadHistoryDataForCell(index: Int) -> String? {
