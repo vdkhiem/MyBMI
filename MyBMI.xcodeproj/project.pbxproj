@@ -78,10 +78,10 @@
 				FFDEA44A20ACF81600B60AB4 /* Assets.xcassets */,
 				FFDEA44C20ACF81600B60AB4 /* LaunchScreen.storyboard */,
 				FFDEA44F20ACF81600B60AB4 /* Info.plist */,
+				B795FC2720B0340000121AF8 /* MyBMI.plist */,
 				FFDEA45520AD24FE00B60AB4 /* Bmi.swift */,
 				B795FC2320B01ED300121AF8 /* CoreDataManager.swift */,
 				B795FC2520B0226700121AF8 /* UtilityManager.swift */,
-				B795FC2720B0340000121AF8 /* MyBMI.plist */,
 				B712F84920B0FAC700739FDC /* PListManager.swift */,
 				B718374720B1287D00284C24 /* UIColorManager.swift */,
 			);
