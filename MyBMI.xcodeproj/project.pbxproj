@@ -13,6 +13,7 @@
 		B795FC2420B01ED300121AF8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795FC2320B01ED300121AF8 /* CoreDataManager.swift */; };
 		B795FC2620B0226700121AF8 /* UtilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795FC2520B0226700121AF8 /* UtilityManager.swift */; };
 		B795FC2820B0340000121AF8 /* MyBMI.plist in Resources */ = {isa = PBXBuildFile; fileRef = B795FC2720B0340000121AF8 /* MyBMI.plist */; };
+		B7C08CAC20B574DF002285D9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C08CAB20B574DF002285D9 /* Extension.swift */; };
 		FFDEA44420ACF81600B60AB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA44320ACF81600B60AB4 /* AppDelegate.swift */; };
 		FFDEA44620ACF81600B60AB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDEA44520ACF81600B60AB4 /* ViewController.swift */; };
 		FFDEA44920ACF81600B60AB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDEA44720ACF81600B60AB4 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		B795FC2320B01ED300121AF8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B795FC2520B0226700121AF8 /* UtilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityManager.swift; sourceTree = "<group>"; };
 		B795FC2720B0340000121AF8 /* MyBMI.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MyBMI.plist; sourceTree = "<group>"; };
+		B7C08CAB20B574DF002285D9 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		FFDEA44020ACF81600B60AB4 /* MyBMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDEA44320ACF81600B60AB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFDEA44520ACF81600B60AB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				B795FC2520B0226700121AF8 /* UtilityManager.swift */,
 				B712F84920B0FAC700739FDC /* PListManager.swift */,
 				B718374720B1287D00284C24 /* UIColorManager.swift */,
+				B7C08CAB20B574DF002285D9 /* Extension.swift */,
 			);
 			path = MyBMI;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7C08CAC20B574DF002285D9 /* Extension.swift in Sources */,
 				FFDEA45620AD24FE00B60AB4 /* Bmi.swift in Sources */,
 				FFDEA44620ACF81600B60AB4 /* ViewController.swift in Sources */,
 				FFDEA45F20AD3B6700B60AB4 /* BmiModel.xcdatamodeld in Sources */,
@@ -245,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -298,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -311,7 +315,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AWNUB7TQ68;
 				INFOPLIST_FILE = MyBMI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DKVO.MyBMI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -325,7 +331,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AWNUB7TQ68;
 				INFOPLIST_FILE = MyBMI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DKVO.MyBMI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
