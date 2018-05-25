@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     // Outlets declaration
     @IBOutlet weak var unitsSegmentControl: UISegmentedControl!
+    @IBOutlet weak var genderSegmentControl: UISegmentedControl!
     @IBOutlet weak var weightText: UITextField!
     @IBOutlet weak var heightText: UITextField!
     @IBOutlet weak var bmiResultLabel: UILabel!
@@ -23,7 +24,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Member variables
     let historyDataMaxCount = 5
     var bmiData:Set<Bmi> = []
-    var coreDataManager = CoreDataManager(appDelegate: UIApplication.shared.delegate as! AppDelegate, entityName: "BmiData")
+    var bmiDataCoreManager = CoreDataManager(appDelegate: UIApplication.shared.delegate as! AppDelegate, entityName: "BmiData")
+    var bmiSettingDataCoreManager = CoreDataManager(appDelegate: UIApplication.shared.delegate as! AppDelegate, entityName: "BmiSetting")
     let plistManager = PListManager(resourceName: "MyBMI")
     let colorManager = UIColorManager()
     
@@ -36,6 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let bmi = retrieveBMI()
         displayBMI(bmi: bmi!)
         updateHistoryData(byBMI: bmi!)
+        saveBmiSetting()
     }
     
     override func viewDidLoad() {
@@ -51,7 +54,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let historyDataList = coreDataManager.fetchRows()
+        let historyDataList = bmiDataCoreManager.fetchRows()
         return historyDataList.count
     }
     
@@ -75,6 +78,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         calculateButton.backgroundColor = colorManager.actionColor()
         calculateButton.layer.cornerRadius = 5
         calculateButton.tintColor = UIColor.white
+        loadBmiSetting()
         loadTextMeasurement()
     }
     
@@ -144,7 +148,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func loadHistoryDataForCell(index: Int) -> (String?, BmiMessageType)  {
-        let historyDataList = coreDataManager.fetchRows()
+        let historyDataList = bmiDataCoreManager.fetchRows()
         let index = (historyDataList.count - 1) - index
         var messageType: BmiMessageType = BmiMessageType.normal
         
@@ -182,21 +186,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
         
     func addToHistoryData(byBMI: Bmi) {
-        let rowEntity = coreDataManager.newRowToEntity()
+        let rowEntity = bmiDataCoreManager.newRowToEntity()
         rowEntity.setValue(UtilityManager().getNow(), forKey: "createdDate")
         rowEntity.setValue(bmiResultLabel.text, forKey: "result")
         rowEntity.setValue(bmiMessageLabel.text, forKey: "message")
         rowEntity.setValue(byBMI.bmiMessageType.rawValue, forKey: "messageType")
-        coreDataManager.addRowToEntity(row: rowEntity)
+        bmiDataCoreManager.addRowToEntity(row: rowEntity)
         self.tableViewHistoryData.reloadData()
     }
     
     func deleteLastHistoryData() {
-        var historyDataList = coreDataManager.fetchRows()
+        var historyDataList = bmiDataCoreManager.fetchRows()
         if historyDataList.count > historyDataMaxCount {
-            coreDataManager.deleteRowFromEntity(row: historyDataList[0] )
+            bmiDataCoreManager.deleteRowFromEntity(row: historyDataList[0] )
         }
         self.tableViewHistoryData.reloadData()
+    }
+    
+    func loadBmiSetting() {
+        if let bmiSetting = getBmiSetting() {
+            heightText.text = bmiSetting.value(forKey: "height") as? String
+            unitsSegmentControl.selectedSegmentIndex = bmiSetting.value(forKey: "unit") as! Int
+            genderSegmentControl.selectedSegmentIndex = bmiSetting.value(forKey: "gender") as! Int
+        }
+    }
+    
+    func getBmiSetting() -> NSManagedObject? {
+        let bmiSettingList = bmiSettingDataCoreManager.fetchRows()
+        if (bmiSettingList.count > 0 ) {
+            return bmiSettingList.first
+        }
+        return nil
+    }
+    
+    func saveBmiSetting() {
+        if let bmiSetting = getBmiSetting() {
+            bmiSetting.setValue(unitsSegmentControl.selectedSegmentIndex, forKey: "unit")
+            bmiSetting.setValue(genderSegmentControl.selectedSegmentIndex, forKey: "gender")
+            bmiSetting.setValue(heightText.text, forKey: "height")
+            
+        } else {
+            let rowEntity = bmiSettingDataCoreManager.newRowToEntity()
+            rowEntity.setValue(unitsSegmentControl.selectedSegmentIndex, forKey: "unit")
+            rowEntity.setValue(genderSegmentControl.selectedSegmentIndex, forKey: "gender")
+            rowEntity.setValue(heightText.text, forKey: "height")
+            bmiSettingDataCoreManager.addRowToEntity(row: rowEntity)
+        }
+        
     }
 }
 

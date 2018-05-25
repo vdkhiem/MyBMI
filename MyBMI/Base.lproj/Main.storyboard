@@ -163,6 +163,7 @@
                         <outlet property="bmiMessageLabel" destination="VPu-X1-NUt" id="VfJ-tG-Ifb"/>
                         <outlet property="bmiResultLabel" destination="l46-mb-VnD" id="9CQ-rR-lUd"/>
                         <outlet property="calculateButton" destination="80P-E8-GeL" id="klq-0p-Fil"/>
+                        <outlet property="genderSegmentControl" destination="Ovh-VZ-fmE" id="WOi-P3-Bdn"/>
                         <outlet property="heightText" destination="9fk-fd-Exw" id="Hak-Xh-HaN"/>
                         <outlet property="tableViewHistoryData" destination="t7F-oa-3qt" id="jRW-z3-Fs8"/>
                         <outlet property="unitsSegmentControl" destination="DnJ-Tg-Gyl" id="iTn-pz-BSD"/>

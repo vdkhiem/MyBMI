@@ -6,7 +6,13 @@
         <attribute name="messageType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="result" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="BmiSetting" representedClassName="BmiSetting" syncable="YES" codeGenerationType="class">
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
         <element name="BmiData" positionX="-45" positionY="0" width="128" height="105"/>
+        <element name="BmiSetting" positionX="-45" positionY="27" width="128" height="90"/>
     </elements>
 </model>
